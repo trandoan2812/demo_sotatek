@@ -1,0 +1,9 @@
+{"scenes": [
+    {"id": 0, "background_url": "mountain0.png", "hitzones": [
+    {"x": "10%", "y":"50%", "goto": 1}
+    ]},
+    {"id": 1, "background_url": "mountain1.png", "hitzones": [
+    {"x": "10%", "y":"50%", "goto": 0},
+    {"x": "60%", "y":"50%", "goto": 2}
+    ]}
+]}
