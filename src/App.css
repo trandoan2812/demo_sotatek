@@ -58,3 +58,8 @@ body,
   position: absolute;
   right: 0;
 }
+.icon-pin {
+  position: absolute;
+  font-size: 60px;
+  color: black;
+}

@@ -1,23 +1,24 @@
 import "./App.css";
-import { CaretLeftOutlined, CaretRightOutlined } from "@ant-design/icons";
+import { CaretLeftOutlined, CaretRightOutlined, PushpinFilled } from "@ant-design/icons";
 import { useState } from "react";
 import $ from "jquery";
-import { notification } from "antd";
 import "antd/dist/antd.css";
 
 function App() {
   const [isMoveDirection, setIsMoveDirection] = useState("");
+  const [positionPin, setPositionPin] = useState(null);
 
   const onMoveDirection = (direction) => {
     setIsMoveDirection(direction);
   };
 
   const onMoveStreet = (e) => {
-    notification.info({
-      message: "Position",
-      description: `Top: ${e.pageY}, Left: ${e.pageX}`,
-      placement: "bottomLeft",
-    });
+    const top = e.pageY;
+    const left = e.pageX;
+    setPositionPin({
+      top,
+      left
+    })
   };
 
   return (
@@ -36,6 +37,7 @@ function App() {
           onClick={() => onMoveDirection("right")}
           className="icon-direction icon-direction--right"
         />
+        <PushpinFilled style={{ display: positionPin ? 'block' : 'none', top: positionPin ? positionPin.top : '0', left: positionPin ? positionPin.left : '0'}} className="icon-pin" />
       </div>
     </div>
   );
