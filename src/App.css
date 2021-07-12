@@ -63,3 +63,12 @@ body,
   font-size: 60px;
   color: black;
 }
+.pin-information {
+  position: absolute;
+  bottom: 0;
+  left: 45%;
+  background-color: white;
+  width: 10%;
+  padding: 10px;
+  text-align: center;
+}
