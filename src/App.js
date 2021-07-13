@@ -6,20 +6,18 @@ import {
 } from "@ant-design/icons";
 import { useState } from "react";
 import $ from "jquery";
-import "antd/dist/antd.css";
+import imageBg from "./assets/images/1.jpg";
 
 function App() {
-  const [isMoveDirection, setIsMoveDirection] = useState("");
   const [positionPin, setPositionPin] = useState(null);
-
   const onMoveDirectionLeft = (e) => {
     e.stopPropagation();
-    setIsMoveDirection("left");
+    $("html").animate({ scrollLeft: "0" }, 1000);
   };
 
   const onMoveDirectionRight = (e) => {
     e.stopPropagation();
-    setIsMoveDirection("right");
+    $("html").animate({ scrollLeft: $(".image-map").width() }, 1000);
   };
 
   const onMoveStreet = (e) => {
@@ -30,16 +28,10 @@ function App() {
       left,
     });
   };
-
-  console.log("positionPin: ", positionPin);
   return (
-    <div className="App">
-      <div
-        onClick={onMoveStreet}
-        className={`bg-image ${isMoveDirection === "left" && "bg-move-left"} ${
-          isMoveDirection === "right" && "bg-move-right"
-        }`}
-      >
+    <div className="app">
+      <div onClick={onMoveStreet} className={`bg-image`}>
+        <img className="image-map" src={imageBg} />
         <CaretLeftOutlined
           onClick={onMoveDirectionLeft}
           className="icon-direction"
@@ -48,14 +40,12 @@ function App() {
           onClick={onMoveDirectionRight}
           className="icon-direction icon-direction--right"
         />
-
         {positionPin && (
           <>
             <PushpinFilled
               style={{
-                display: positionPin ? "block" : "none",
-                top: positionPin ? positionPin.top : "0",
-                left: positionPin ? positionPin.left : "0",
+                top: positionPin.top,
+                left: positionPin.left,
               }}
               className="icon-pin"
             />
